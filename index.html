@@ -57,7 +57,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Samara ama Lucas?</h1>
+        <h1>Você é viado?</h1>
         <div class="buttons">
             <button id="sim">Sim</button>
             <button id="nao">Não</button>
@@ -66,9 +66,9 @@
     </div>
 
     <script>
-        let naoClicks = 0;  // Contador para os cliques no botão "Não"
+        let naoClicks = 0;
 
-        // Função para mover o botão "não" aleatoriamente
+        
         function moveNao() {
             const buttonNao = document.getElementById("nao");
             const container = document.querySelector(".container");
@@ -83,29 +83,29 @@
             buttonNao.style.top = randomY + 'px';
         }
 
-        // Ação do botão "Sim"
+        
         document.getElementById("sim").addEventListener("click", function() {
-            document.getElementById("message").textContent = "Muito bem, seu irmão também te ama";
+            document.getElementById("message").textContent = "Se assuma logo seu baitola";
             document.getElementById("message").classList.remove("wrong");
             document.getElementById("message").classList.add("right");
         });
 
-        // Ação do botão "Não"
+        
         document.getElementById("nao").addEventListener("click", function() {
-            // Aumenta o contador de cliques no botão "Não"
+            
             naoClicks++;
 
-            // Exibe a mensagem de erro
+            
             document.getElementById("message").textContent = "Resposta errada, tente novamente";
             document.getElementById("message").classList.remove("right");
             document.getElementById("message").classList.add("wrong");
 
-            // Move o botão "Não"
+            
             moveNao();
 
-            // Se o botão "Não" for clicado 10 vezes, ele desaparece
+            
             if (naoClicks >= 10) {
-                document.getElementById("nao").style.display = 'none';  // Esconde o botão "Não"
+                document.getElementById("nao").style.display = 'none';  
             }
         });
     </script>
