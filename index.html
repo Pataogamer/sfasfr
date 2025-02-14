@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samara ama Lucas?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .wrong {
+            color: red;
+        }
+
+        .right {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Samara ama Lucas?</h1>
+        <div class="buttons">
+            <button id="sim">Sim</button>
+            <button id="nao">Não</button>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        // Função para mover o botão "não" aleatoriamente
+        function moveNao() {
+            const buttonNao = document.getElementById("nao");
+            const container = document.querySelector(".container");
+            const maxX = container.offsetWidth - buttonNao.offsetWidth;
+            const maxY = container.offsetHeight - buttonNao.offsetHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            buttonNao.style.position = 'absolute';
+            buttonNao.style.left = randomX + 'px';
+            buttonNao.style.top = randomY + 'px';
+        }
+
+        // Ação do botão "Sim"
+        document.getElementById("sim").addEventListener("click", function() {
+            document.getElementById("message").textContent = "Muito bem, seu irmão também te ama";
+            document.getElementById("message").classList.remove("wrong");
+            document.getElementById("message").classList.add("right");
+        });
+
+        // Ação do botão "Não"
+        document.getElementById("nao").addEventListener("click", function() {
+            document.getElementById("message").textContent = "Resposta errada, tente novamente";
+            document.getElementById("message").classList.remove("right");
+            document.getElementById("message").classList.add("wrong");
+
+            // Move o botão "Não"
+            moveNao();
+        });
+    </script>
+</body>
+</html>
