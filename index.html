@@ -13,7 +13,6 @@
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
-            overflow: hidden;
         }
 
         .container {
@@ -22,7 +21,6 @@
             border-radius: 8px;
             background-color: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
         }
 
         h1 {
@@ -68,6 +66,8 @@
     </div>
 
     <script>
+        let naoClicks = 0;  // Contador para os cliques no botão "Não"
+
         // Função para mover o botão "não" aleatoriamente
         function moveNao() {
             const buttonNao = document.getElementById("nao");
@@ -92,12 +92,21 @@
 
         // Ação do botão "Não"
         document.getElementById("nao").addEventListener("click", function() {
+            // Aumenta o contador de cliques no botão "Não"
+            naoClicks++;
+
+            // Exibe a mensagem de erro
             document.getElementById("message").textContent = "Resposta errada, tente novamente";
             document.getElementById("message").classList.remove("right");
             document.getElementById("message").classList.add("wrong");
 
             // Move o botão "Não"
             moveNao();
+
+            // Se o botão "Não" for clicado 10 vezes, ele desaparece
+            if (naoClicks >= 10) {
+                document.getElementById("nao").style.display = 'none';  // Esconde o botão "Não"
+            }
         });
     </script>
 </body>
